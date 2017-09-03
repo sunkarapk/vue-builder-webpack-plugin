@@ -38,6 +38,7 @@ Whenever you run webpack in normal or watch mode, this plugin will automatically
 #### Options
 
 * `path`: Either absolute path or the relative path to the main project folder. Used to search for building vue files.
+* `folder`: If `true`, will support placing of individual files in a folder. Default `false`. See example below.
 
 ## Example
 
@@ -56,6 +57,11 @@ You can also rename the `App.vue.css` to `App.scoped.vue.css` to generate the fo
 ```
 
 This plugin inherently supports `jade`, `coffee`, `sass`, `scss`, `styl`, `less` as languages in vue file.
+
+### Folder scenario
+
+When you have the option `folder` set to `true`, you can place the files `App.vue.js`, `App.vue.css`, `App.vue.html` inside a folder named
+`App` and the plugin will generate a file named `App.vue` alongside the `App` folder.
 
 If you like this project, please watch this and follow me.
 

@@ -1,13 +1,18 @@
 var recursiveRead = require('recursive-readdir')
   , path = require('path')
   , fs = require('fs')
-  , directory = __dirname;
+  , directory = __dirname
+  , folder = false;
 
 function VueBuilderPlugin (options) {
   if (path.isAbsolute(options.path)) {
     directory = options.path;
   } else {
     directory = path.resolve(path.join(__dirname, '..', '..', options.path || ''));
+  }
+
+  if (options.folder) {
+    folder = true;
   }
 }
 
@@ -109,8 +114,14 @@ function buildVues(callback) {
     });
 
     Object.keys(vues).forEach(function (vue) {
+      var dest = vue;
+
+      if (folder && path.basename(vue) === path.basename(path.dirname(vue))) {
+        dest = path.dirname(vue);
+      }
+
       if (sources.script[vue] && sources.style[vue] && sources.template[vue]) {
-        fs.writeFileSync(vue + '.vue', singleVue(vue, sources), 'utf8');
+        fs.writeFileSync(dest + '.vue', singleVue(vue, sources), 'utf8');
       }
     });
 
