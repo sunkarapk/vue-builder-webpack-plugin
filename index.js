@@ -127,7 +127,7 @@ VueBuilderPlugin.prototype.apply = function(compiler) {
     buildVues(callback);
   });
 
-  compiler.plugin('after-compile', function (compilation) {
+  compiler.plugin('after-compile', function (compilation, callback) {
     compilation.fileDependencies = compilation.fileDependencies.filter(function (file) {
       if (file.slice(-4) == '.vue') {
         return false;
@@ -135,6 +135,8 @@ VueBuilderPlugin.prototype.apply = function(compiler) {
 
       return true;
     });
+
+    callback();
   });
 };
 
