@@ -20,5 +20,8 @@
   "homepage": "https://github.com/pksunkara/vue-builder-webpack-plugin#readme",
   "dependencies": {
     "recursive-readdir": "^2.1.0"
+  },
+  "peerDependencies": {
+    "webpack": ">= 2.0.0"
   }
 }

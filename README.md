@@ -37,7 +37,7 @@ Whenever you run webpack in normal or watch mode, this plugin will automatically
 
 #### Options
 
-* `path`: The relative path to the folder which needs to be searched for to build vue files
+* `path`: Either absolute path or the relative path to the main project folder. Used to search for building vue files.
 
 ## Example
 

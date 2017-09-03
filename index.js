@@ -4,7 +4,11 @@ var recursiveRead = require('recursive-readdir')
   , directory = __dirname;
 
 function VueBuilderPlugin (options) {
-	directory = path.resolve(path.join(__dirname, options.path || ''));
+  if (path.isAbsolute(options.path)) {
+    directory = options.path;
+  } else {
+    directory = path.resolve(path.join(__dirname, '..', '..', options.path || ''));
+  }
 }
 
 function buildVues(callback) {
