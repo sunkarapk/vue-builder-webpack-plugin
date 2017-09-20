@@ -13,7 +13,7 @@ You can use this plugin to automatically generate `.vue` files.
 ## Installation
 
 ```
-$ npm install github.com/pksunkara/vue-builder-webpack-plugin --save-dev
+$ npm install vue-builder-webpack-plugin --save-dev
 ```
 
 ## Usage
