@@ -58,16 +58,20 @@ function buildVues(callback) {
       return false;
     }
 
-    function singleVue(name) {
+    function singleVue(name, dirname) {
       var data = '';
 
       var script = sources.script[name];
       var style = sources.style[name];
       var template = sources.template[name];
 
-      data += '<script src="' + script.file + '" lang="' + script.lang + '"></script>\n';
-      data += '<style src="' + style.file + '" lang="' + style.lang + '"' + (style.scoped ? ' scoped' : '') + '></style>\n';
-      data += '<template src="' + template.file + '" lang="' + template.lang + '"></template>\n';
+      function relate(file) {
+        return '.' + path.sep + path.relative(dirname, file);
+      }
+
+      data += '<script src="' + relate(script.file) + '" lang="' + script.lang + '"></script>\n';
+      data += '<style src="' + relate(style.file) + '" lang="' + style.lang + '"' + (style.scoped ? ' scoped' : '') + '></style>\n';
+      data += '<template src="' + relate(template.file) + '" lang="' + template.lang + '"></template>\n';
 
       return data;
     }
@@ -121,7 +125,7 @@ function buildVues(callback) {
       }
 
       if (sources.script[vue] && sources.style[vue] && sources.template[vue]) {
-        fs.writeFileSync(dest + '.vue', singleVue(vue, sources), 'utf8');
+        fs.writeFileSync(dest + '.vue', singleVue(vue, path.dirname(dest)), 'utf8');
       }
     });
 

@@ -22,12 +22,12 @@ In your `webpack.config.js`
 
 ```js
 var VueBuilder = require('vue-builder-webpack-plugin');
- 
+
 module.exports = {
-    // ... 
+    // ...
     plugins: [
       new VueBuilder({
-      	  path: 'src'
+        path: 'src'
       });
     ]
 };
