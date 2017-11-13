@@ -99,6 +99,10 @@ function buildVues(callback) {
         return;
       }
 
+      if (langCheck(file, 'ts', 'script')) {
+        return;
+      }
+
       // CSS alternatives
       if (langCheck(file, 'sass', 'style')) {
         return;
