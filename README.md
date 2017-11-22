@@ -28,7 +28,7 @@ module.exports = {
     plugins: [
       new VueBuilder({
         path: 'src'
-      });
+      })
     ]
 };
 ```
