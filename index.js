@@ -94,6 +94,10 @@ function buildVues(callback) {
         return;
       }
 
+      if (langCheck(file, 'pug', 'template')) {
+        return;
+      }
+
       // JS alternatives
       if (langCheck(file, 'coffee', 'script')) {
         return;
