@@ -151,7 +151,7 @@ VueBuilderPlugin.prototype.apply = function(compiler) {
   });
 
   compiler.plugin('after-compile', function (compilation, callback) {
-    compilation.fileDependencies = compilation.fileDependencies.filter(function (file) {
+    compilation.fileDependencies = Array.from(compilation.fileDependencies).filter(function (file) {
       if (file.slice(-4) == '.vue') {
         return false;
       }

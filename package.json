@@ -1,6 +1,6 @@
 {
   "name": "vue-builder-webpack-plugin",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Webpack plugin to build vue files automatically",
   "main": "index.js",
   "repository": {
