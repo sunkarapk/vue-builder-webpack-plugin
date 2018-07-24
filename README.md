@@ -1,4 +1,6 @@
 # vue-builder-webpack-plugin
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpksunkara%2Fvue-builder-webpack-plugin.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpksunkara%2Fvue-builder-webpack-plugin?ref=badge_shield)
+
 
 Webpack plugin to build vue files automatically
 
@@ -74,6 +76,9 @@ __I accept pull requests and guarantee a reply back within a day__
 
 ## License
 MIT/X11
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpksunkara%2Fvue-builder-webpack-plugin.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpksunkara%2Fvue-builder-webpack-plugin?ref=badge_large)
 
 ## Bug Reports
 Report [here](http://github.com/pksunkara/vue-builder-webpack-plugin/issues). __Guaranteed reply within a day__.
