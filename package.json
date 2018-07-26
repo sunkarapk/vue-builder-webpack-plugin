@@ -1,26 +1,42 @@
 {
   "name": "vue-builder-webpack-plugin",
   "version": "0.4.0",
+  "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (pksunkara.github.com)",
   "description": "Webpack plugin to build vue files automatically",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pksunkara/vue-builder-webpack-plugin.git"
+    "url": "git://github.com/pksunkara/vue-builder-webpack-plugin.git"
   },
   "keywords": [
     "vue",
     "webpack",
     "plugin"
   ],
-  "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (pksunkara.github.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pksunkara/vue-builder-webpack-plugin/issues"
-  },
   "homepage": "https://github.com/pksunkara/vue-builder-webpack-plugin#readme",
+  "scripts": {},
+  "contributors": [
+    {
+      "name": "Pavan Kumar Sunkara",
+      "email": "pavan.sss1991@gmail.com"
+    }
+  ],
   "dependencies": {
     "recursive-readdir": "^2.1.0"
   },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=4"
+  },
+  "bugs": {
+    "url": "https://github.com/pksunkara/vue-builder-webpack-plugin/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/pksunkara/vue-builder-webpack-plugin/raw/master/LICENSE"
+    }
+  ],
   "peerDependencies": {
     "webpack": ">= 2.0.0"
   }
