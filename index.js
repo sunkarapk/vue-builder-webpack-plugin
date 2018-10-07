@@ -4,6 +4,7 @@ const fs = require('fs');
 
 let directory = __dirname;
 let folder = false;
+let allScoped = false;
 
 const VueBuilderPlugin = (options) => {
   if (path.isAbsolute(options.path)) {
@@ -14,6 +15,10 @@ const VueBuilderPlugin = (options) => {
 
   if (options.folder) {
     folder = true;
+  }
+
+  if (options.allScoped) {
+    allScoped = true;
   }
 };
 
@@ -43,6 +48,10 @@ const buildVues = (callback) => {
         if (type === 'style' && name.slice(-7) === '.scoped') {
           scoped = true;
           name = name.slice(0, -7);
+        }
+
+        if (type === 'style' && allScoped) {
+           scoped = true;
         }
 
         vues[name] = true;
