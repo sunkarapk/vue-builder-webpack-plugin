@@ -51,7 +51,7 @@ const buildVues = (callback) => {
         }
 
         if (type === 'style' && allScoped) {
-           scoped = true;
+          scoped = true;
         }
 
         vues[name] = true;

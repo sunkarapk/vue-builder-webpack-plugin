@@ -35,11 +35,6 @@ module.exports = {
 
 Whenever you run webpack in normal or watch mode, this plugin will automatically generate your `.vue` files.
 
-#### Options
-
-* `path`: Either absolute path or the relative path to the main project folder. Used to search for building vue files.
-* `folder`: If `true`, will support placing of individual files in a folder. Default `false`. See example below.
-
 ## Example
 
 If you have the following files, `App.vue.js`, `App.vue.css`, `App.vue.html`, the generated `App.vue` file will look like this:
@@ -57,6 +52,12 @@ You can also rename the `App.vue.css` to `App.scoped.vue.css` to generate the fo
 ```
 
 This plugin inherently supports `jade`, `coffee`, `sass`, `scss`, `styl`, `less` as languages in vue file.
+
+#### Options
+
+* `path`: Either absolute path or the relative path to the main project folder. Used to search for building vue files
+* `folder`: If `true`, will support placing of individual files in a folder. Default `false` (see below)
+* `allScoped`: If `true`, will default all style files to be scoped. EX: `App.vue.css` would be considered as `App.scoped.vue.css`
 
 ### Folder scenario
 

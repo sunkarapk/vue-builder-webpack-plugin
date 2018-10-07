@@ -1,6 +1,6 @@
 {
   "name": "vue-builder-webpack-plugin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (pksunkara.github.com)",
   "description": "Webpack plugin to build vue files automatically",
   "main": "index.js",
