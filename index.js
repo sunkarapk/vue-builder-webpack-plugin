@@ -50,7 +50,7 @@ const buildVues = (callback) => {
           name = name.slice(0, -7);
         }
 
-        if (type == 'style' && allScoped) {
+        if (type === 'style' && allScoped) {
            scoped = true;
         }
 
