@@ -4,6 +4,7 @@ var recursiveRead = require('recursive-readdir')
   , directory = __dirname
   , folder = false
   , allScoped = false
+  , suffix = '';
 
 function VueBuilderPlugin (options) {
   if (path.isAbsolute(options.path)) {
@@ -15,8 +16,13 @@ function VueBuilderPlugin (options) {
   if (options.folder) {
     folder = true;
   }
+
   if (options.allScoped) {
     allScoped = true;
+  }
+
+  if (options.suffix) {
+    suffix = options.suffix;
   }
 }
 
@@ -141,7 +147,7 @@ function buildVues(callback) {
       }
 
       if (sources.script[vue] && sources.style[vue] && sources.template[vue]) {
-        fs.writeFileSync(dest + '.vue', singleVue(vue, path.dirname(dest)), 'utf8');
+        fs.writeFileSync(dest + suffix + '.vue', singleVue(vue, path.dirname(dest)), 'utf8');
       }
     });
 
