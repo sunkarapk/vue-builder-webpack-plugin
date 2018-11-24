@@ -22,7 +22,7 @@ function VueBuilderPlugin(options) {
   if (options.allScoped) {
     allScoped = true;
   }
-};
+}
 
 const buildVues = (callback, compiler) => {
   // eslint-disable-next-line no-console
