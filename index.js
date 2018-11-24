@@ -6,6 +6,7 @@ const VirtualModulePlugin = require('./virtual-module-webpack-plugin');
 let directory = __dirname;
 let folder = false;
 let allScoped = false;
+let createdFiles = [];
 
 function VueBuilderPlugin(options) {
   if (path.isAbsolute(options.path)) {
@@ -147,6 +148,7 @@ const buildVues = (callback, compiler) => {
         const contents = singleVue(vue, path.dirname(dest));
         const _fs = (this && this.fileSystem) || compiler.inputFileSystem;
 
+        createdFiles.push(modulePath);
         VirtualModulePlugin.populateFilesystem({ fs: _fs, modulePath, contents, ctime });
       }
     });
@@ -162,7 +164,8 @@ VueBuilderPlugin.prototype.apply = (compiler) => {
   compiler.plugin('after-compile', (compilation, callback) => {
     // eslint-disable-next-line no-param-reassign
     compilation.fileDependencies = Array.from(compilation.fileDependencies).filter((file) => {
-      if (file.slice(-4) === '.vue') {
+
+      if (createdFiles.some(x => x === file)) {
         return false;
       }
 
