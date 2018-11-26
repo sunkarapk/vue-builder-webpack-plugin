@@ -1,6 +1,6 @@
 const recursiveRead = require('recursive-readdir');
 const path = require('path');
-const fs = require('fs');
+const VirtualModulePlugin = require('virtual-module-webpack-plugin');
 
 let directory = __dirname;
 let folder = false;
@@ -20,9 +20,9 @@ function VueBuilderPlugin(options) {
   if (options.allScoped) {
     allScoped = true;
   }
-};
+}
 
-const buildVues = (callback) => {
+const buildVues = (callback, compiler) => {
   // eslint-disable-next-line no-console
   console.log('Building vue files');
 
@@ -141,7 +141,12 @@ const buildVues = (callback) => {
       }
 
       if (sources.script[vue] && sources.style[vue] && sources.template[vue]) {
-        fs.writeFileSync(`${dest}.vue`, singleVue(vue, path.dirname(dest)), 'utf8');
+        const modulePath = `${dest}.vue`;
+        const ctime = VirtualModulePlugin.statsDate();
+        const contents = singleVue(vue, path.dirname(dest));
+        const fs = (this && this.fileSystem) || compiler.inputFileSystem;
+
+        VirtualModulePlugin.populateFilesystem({ fs, modulePath, contents, ctime });
       }
     });
 
@@ -150,8 +155,8 @@ const buildVues = (callback) => {
 };
 
 VueBuilderPlugin.prototype.apply = (compiler) => {
-  compiler.plugin('run', (compilation, callback) => buildVues(callback));
-  compiler.plugin('watch-run', (compilation, callback) => buildVues(callback));
+  compiler.plugin('run', (compilation, callback) => buildVues(callback, compiler));
+  compiler.plugin('watch-run', (compilation, callback) => buildVues(callback, compiler));
 
   compiler.plugin('after-compile', (compilation, callback) => {
     // eslint-disable-next-line no-param-reassign
