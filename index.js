@@ -6,7 +6,7 @@ let directory = __dirname;
 let folder = false;
 let allScoped = false;
 
-const VueBuilderPlugin = (options) => {
+function VueBuilderPlugin(options) {
   if (path.isAbsolute(options.path)) {
     directory = options.path;
   } else {
