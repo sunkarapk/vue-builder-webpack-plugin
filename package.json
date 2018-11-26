@@ -22,7 +22,8 @@
     }
   ],
   "dependencies": {
-    "recursive-readdir": "^2.1.0"
+    "recursive-readdir": "^2.1.0",
+    "virtual-module-webpack-plugin": "^0.4.0"
   },
   "devDependencies": {
     "eslint": "^5.4.0",

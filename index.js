@@ -1,7 +1,6 @@
 const recursiveRead = require('recursive-readdir');
 const path = require('path');
-const fs = require('fs');
-const VirtualModulePlugin = require('./virtual-module-webpack-plugin');
+const VirtualModulePlugin = require('virtual-module-webpack-plugin');
 
 let directory = __dirname;
 let folder = false;
@@ -146,10 +145,10 @@ const buildVues = (callback, compiler) => {
         const modulePath = `${dest}.vue`;
         const ctime = VirtualModulePlugin.statsDate();
         const contents = singleVue(vue, path.dirname(dest));
-        const fileSystem = (this && this.fileSystem) || compiler.inputFileSystem;
+        const fs = (this && this.fileSystem) || compiler.inputFileSystem;
 
         createdFiles.push(modulePath);
-        VirtualModulePlugin.populateFilesystem({ fs: fileSystem, modulePath, contents, ctime });
+        VirtualModulePlugin.populateFilesystem({ fs, modulePath, contents, ctime });
       }
     });
 
