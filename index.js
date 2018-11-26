@@ -163,7 +163,7 @@ VueBuilderPlugin.prototype.apply = (compiler) => {
   compiler.plugin('after-compile', (compilation, callback) => {
     // eslint-disable-next-line no-param-reassign
     compilation.fileDependencies = Array.from(compilation.fileDependencies).filter((file) => {
-      if (createdFiles.some(x => x === file)) {
+      if (createdFiles.includes(file)) {
         return false;
       }
 
