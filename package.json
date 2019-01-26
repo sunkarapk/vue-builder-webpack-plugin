@@ -14,7 +14,9 @@
     "plugin"
   ],
   "homepage": "https://github.com/pksunkara/vue-builder-webpack-plugin#readme",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint ."
+  },
   "contributors": [
     {
       "name": "Pavan Kumar Sunkara",
@@ -26,9 +28,9 @@
     "virtual-module-webpack-plugin": "^0.4.0"
   },
   "devDependencies": {
-    "eslint": "^5.4.0",
+    "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.15.0"
   },
   "engines": {
     "node": ">=4"

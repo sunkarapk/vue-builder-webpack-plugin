@@ -80,9 +80,17 @@ const buildVues = (callback, compiler) => {
 
       const relate = file => `.${path.sep}${path.relative(dirname, file)}`;
 
-      data += `<script src="${relate(script.file)}" lang="${script.lang}"></script>\n`;
-      data += `<style src="${relate(style.file)}" lang="${style.lang}"${style.scoped ? ' scoped' : ''}></style>\n`;
-      data += `<template src="${relate(template.file)}" lang="${template.lang}"></template>\n`;
+      if (script) {
+        data += `<script src="${relate(script.file)}" lang="${script.lang}"></script>\n`;
+      }
+
+      if (style) {
+        data += `<style src="${relate(style.file)}" lang="${style.lang}"${style.scoped ? ' scoped' : ''}></style>\n`;
+      }
+
+      if (template) {
+        data += `<template src="${relate(template.file)}" lang="${template.lang}"></template>\n`;
+      }
 
       return data;
     };
@@ -141,14 +149,16 @@ const buildVues = (callback, compiler) => {
         dest = path.dirname(vue);
       }
 
-      if (sources.script[vue] && sources.style[vue] && sources.template[vue]) {
+      if (sources.script[vue] || sources.style[vue] || sources.template[vue]) {
         const modulePath = `${dest}.vue`;
         const ctime = VirtualModulePlugin.statsDate();
         const contents = singleVue(vue, path.dirname(dest));
         const fs = (this && this.fileSystem) || compiler.inputFileSystem;
 
         createdFiles.push(modulePath);
-        VirtualModulePlugin.populateFilesystem({ fs, modulePath, contents, ctime });
+        VirtualModulePlugin.populateFilesystem({
+          fs, modulePath, contents, ctime,
+        });
       }
     });
 
