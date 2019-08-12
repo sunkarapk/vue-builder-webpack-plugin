@@ -78,7 +78,7 @@ const buildVues = (callback, compiler) => {
       const style = sources.style[name];
       const template = sources.template[name];
 
-      const relate = file => `.${path.sep}${path.relative(dirname, file)}`;
+      const relate = (file) => `.${path.sep}${path.relative(dirname, file)}`;
 
       if (script) {
         data += `<script src="${relate(script.file)}" lang="${script.lang}"></script>\n`;
