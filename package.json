@@ -28,9 +28,9 @@
     "virtual-module-webpack-plugin": "^0.4.0"
   },
   "devDependencies": {
-    "eslint": "^5.12.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.15.0"
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.0"
   },
   "engines": {
     "node": ">=4"
