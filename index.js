@@ -157,7 +157,10 @@ const buildVues = (callback, compiler) => {
 
         createdFiles.push(modulePath);
         VirtualModulePlugin.populateFilesystem({
-          fs, modulePath, contents, ctime,
+          fs,
+          modulePath,
+          contents,
+          ctime,
         });
       }
     });
@@ -171,13 +174,8 @@ VueBuilderPlugin.prototype.apply = (compiler) => {
   compiler.plugin('watch-run', (compilation, callback) => buildVues(callback, compiler));
 
   compiler.plugin('after-compile', (compilation, callback) => {
-    // eslint-disable-next-line no-param-reassign
-    compilation.fileDependencies = Array.from(compilation.fileDependencies).filter((file) => {
-      if (createdFiles.includes(file)) {
-        return false;
-      }
-
-      return true;
+    createdFiles.forEach((file) => {
+      compilation.fileDependencies.delete(file);
     });
 
     callback();
